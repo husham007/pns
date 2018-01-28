@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  p name = #{student.name}
+  p Class = #{student.class}
+  p Roll Number = #{student.rollno}
+  p Subject = #{report.subject}
+  p Test Date = #{report.testdate}
+  p Total Marks = #{report.totalmarks}
+  p Obtained Marks = #{report.obtainedmarks}
+  p Remarks = #{report.remarks}
+  if report.sentdate
+    b 
+      p Test report already sent on  = #{report.sentdate}
+  hr
+  hr
+  
+   
+  
+  
+  

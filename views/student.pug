@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Student Details
+  p Student = #{student.name}
+  p Roll Number = #{student.rollno}
+  p Class = #{student.class}
+  p Address  = #{student.address}
+  p Parent Name = #{student.parentname}
+  p DOB = #{student.dob}
+  p Phone Number = #{student.phoneno}
+  
+  hr 
+  hr
+  if user
+    if user.id == student.author 
+      a.btn.btn-default(href='/students/edit/'+student._id) Edit
+      a.btn.btn-danger.delete-student(href='#',data-id=student._id) Delete

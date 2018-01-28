@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 Other Reports
+  ul.list-group
+    if reports
+      each report, i in reports
+        li.list-group-item
+          a(href="/reports/otherreports/"+report._id)= report.tag+' '+report.remarks
+          if user
+            if user.id == report.institution
+              if user.sentdate
+                 a.btn.btn-danger(href='/reports/deleteother/'+report._id) Delete
+              else
+                a.btn.btn-default(href='/reports/editother/'+report._id) Edit
+                a.btn.btn-danger(href='/reports/deleteother/'+report._id) Delete
+                a.btn.btn-default(href='/reports/sendother/'+report._id) Send Report

@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/reports/createAssignment')
+    #form-group
+      label Class:
+      input.form-control(name='class', type='text')
+    #form-group
+      label Start Date:
+      input.form-control(name='startdate', type='text')
+    #form-group
+      label End Date:
+      input.form-control(name='enddate', type='text')
+    #form-group
+      label Subject:
+      input.form-control(name='subject', type='text')
+    #form-group
+      label Description:
+      textarea.form-control(name='assignment')='Assignment'
+    br
+    input.btn.btn-primary(type='submit', value='Create')

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Attendence Reports
+  ul.list-group
+    if reports
+      each report, i in reports
+        li.list-group-item
+          a(href="/reports/attendencereports/"+report._id)= report.tag
+          if user
+            if user.id == report.institution 
+              if !report.sentdate
+                a.btn.btn-default(href='/reports/editattendence/'+report._id) Edit
+                a.btn.btn-danger(href='/reports/deleteattendence/'+report._id) Delete
+                a.btn.btn-default(href='/reports/sendattendence/'+report._id) Send Report
+              

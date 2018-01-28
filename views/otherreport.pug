@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  p Date = #{report.date}
+  p Details = #{report.remarks}
+  if report.sentdate
+    p
+      b Report is sent on = #{report.sentdate}
+  hr
+  
+   
+  
+  
+  

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/reports/editattendence/'+report._id)
+    p Student #{report.tag}
+    div.form-group
+      label(for='status') Select attendence:
+      select#status.form-control(type='select', placeholder='Select attendence' name='status' required='true' )
+        option(value=present) Present
+        option(value=absent) Absent
+    #form-group
+      label Remarks:
+      textarea.form-control(name='remarks')=report.remarks
+    br
+    input.btn.btn-primary(type='submit', value='Submit')

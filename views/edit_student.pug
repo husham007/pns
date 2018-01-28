@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/students/edit/'+student._id)
+    #form-group
+      label Name:
+      input.form-control(name='name', type='text', value = student.name)
+    #form-group
+      label Roll Number:
+      input.form-control(name='rollno', type='text', value = student.rollno)
+    #form-group
+      label Address:
+      input.form-control(name='address', type='text', value = student.address)
+    #form-group
+      label Date of Birth:
+      input.form-control(name='dob', type='text', value = student.dob)
+    #form-group
+      label Class:
+      input.form-control(name='class', type='text', value = student.class)
+    #form-group
+      label Parent Name:
+      input.form-control(name='parentname', type='text', value = student.parentname)
+    #form-group
+      label Parent phoneno:
+      input.form-control(name='phoneno', type='text', value = student.phoneno)
+    br
+    input.btn.btn-primary(type='submit', value='Submit')

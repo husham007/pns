@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  if user
+    a(href="/reports/createAttendence") Create Attendence Report
+    br
+    a(href="/reports/createAssignment") Create Assignment Report
+    br
+    a(href="/reports/createTest") Create Test Report
+    br
+    a(href="/reports/createCircular") Create Circular Report
+    br
+    a(href="/reports/createOther") Create Other Report
+    hr
+    a(href="/reports/sendAttendence") Send/Edit/Delete Attendence Reports
+    br
+    a(href="/reports/sendAssignment") Send/Edit/Delete Assignment Reports
+    br
+    a(href="/reports/sendTest") Send/Edit/Delete  Test Reports
+    br
+    a(href="/reports/sendCircular") Send/Edit/Delete Circular Reports
+    br
+    a(href="/reports/sendOther") Send/Edit/Delete Other Reports
+    
+    
+  else
+    h1 Welcome to Parental notification system

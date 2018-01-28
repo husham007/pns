@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/reports/edittest/'+report._id)
+    p Student #{report.tag}
+    #form-group
+      label Subject:
+      input.form-control(name='subject', type='text', value = report.subject)
+    div.form-group
+      label(for='testdate') Test Date:
+      input#testdate.form-control(type='date', name='testdate', value=report.testdate)
+    #form-group
+      label Total Marks:
+      input.form-control(name='totalmarks', type='text', value=report.totalmarks)
+    #form-group
+      label Obtained Marks:
+      input.form-control(name='obtainedmarks', type='text',value = report.obtainedmarks )  
+    #form-group
+      label Remarks:
+      textarea.form-control(name='remarks')=report.remarks
+    br
+    input.btn.btn-primary(type='submit', value='Submit')

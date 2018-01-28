@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/students/add')
+    #form-group
+      label Name:
+      input.form-control(name='name', type='text')
+    #form-group
+      label Roll Number:
+      input.form-control(name='rollno', type='text')
+    #form-group
+      label Address:
+      input.form-control(name='address', type='text')
+    #form-group
+      label Date of Birth:
+      input.form-control(name='dob', type='text')
+    #form-group
+      label Class:
+      input.form-control(name='class', type='text')
+    #form-group
+      label Parent Name:
+      input.form-control(name='parentname', type='text')
+    #form-group
+      label Parent phoneno:
+      input.form-control(name='phoneno', type='text')
+    
+    br
+    input.btn.btn-primary(type='submit', value='Submit')

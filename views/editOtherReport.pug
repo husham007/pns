@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/reports/editother/'+report._id)
+    
+    div.form-group
+      label(for='date')  Date:
+      input#testdate.form-control(type='date', name='date', value=report.date)
+    
+    #form-group
+      label Details:
+      textarea.form-control(name='remarks')=report.remarks
+    br
+    input.btn.btn-primary(type='submit', value='Submit')

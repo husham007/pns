@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 Circular Reports
+  ul.list-group
+    if reports
+      each report, i in reports
+        li.list-group-item
+          a(href="/reports/circularreports/"+report._id)= 'Matter '+report.matter+' '+'Date is '+report.date
+          if user
+            if user.id == report.institution
+              if report.sentdate 
+                a.btn.btn-danger(href='/reports/deletecircular/'+report._id) Delete
+              else
+                a.btn.btn-default(href='/reports/editcircular/'+report._id) Edit
+                a.btn.btn-danger(href='/reports/deletecircular/'+report._id) Delete
+                a.btn.btn-default(href='/reports/sendcircular/'+report._id) Send Report

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 Test Reports
+  ul.list-group
+    if reports
+      each report, i in reports
+        li.list-group-item
+          a(href="/reports/testreports/"+report._id)= report.tag
+          if user
+            if user.id == report.institution
+              if report.sentdate
+                a.btn.btn-danger(href='/reports/deletetest/'+report._id) Delete
+              else
+                a.btn.btn-default(href='/reports/edittest/'+report._id) Edit
+                a.btn.btn-danger(href='/reports/deletetest/'+report._id) Delete
+                a.btn.btn-default(href='/reports/sendtest/'+report._id) Send Report

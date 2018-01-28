@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/reports/createOther')
+    div.form-group
+      label(for='student') Select Student:
+      select#student.form-control(type='select', placeholder='Select student' name='student' required='true' )
+        for student in students
+          option(value=student._id) Name #{student.name}, Roll No. #{student.rollno} , Class #{student.class}
+          
+    //#form-group
+      label Roll Number:
+      input.form-control(name='rollno', type='text')
+    //#form-group
+      label Class:
+      input.form-control(name='class', type='text')
+    //#form-group
+      label Name:
+      input.form-control(name='name', type='text')
+    //#form-group
+      label Date:
+      input.form-control(name='date', type='text')
+    //#form-group
+      label Status:
+      input.form-control(name='status', type='text')
+      
+    div.form-group
+        label(for='date') Date:
+        input#testdate.form-control(type='date', name='date' )
+    
+    #form-group
+      label Remarks:
+      textarea.form-control(name='remarks')='Default'
+    br
+    input.btn.btn-primary(type='submit', value='Create')

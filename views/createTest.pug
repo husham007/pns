@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/reports/createTest')
+    div.form-group
+      label(for='student') Select Student:
+      select#student.form-control(type='select', placeholder='Select student' name='student' required='true' )
+        if students
+          for student in students
+            option(value=student._id) Name #{student.name}, Roll No. #{student.rollno} , Class #{student.class}
+          
+    #form-group
+      label Subject:
+      input.form-control(name='subject', type='text')
+    div.form-group
+      label(for='testdate') Test Date:
+      input#testdate.form-control(type='date', name='testdate' )
+    //#form-group
+      label Test Date:
+      input.form-control(name='testdate', type='text')
+    #form-group
+      label Total Marks:
+      input.form-control(name='totalmarks', type='text')
+    #form-group
+      label Obtained Marks:
+      input.form-control(name='obtainedmarks', type='text')    
+    #form-group
+      label Remarks:
+      textarea.form-control(name='remarks')='Default'
+    br
+    input.btn.btn-primary(type='submit', value='Create')

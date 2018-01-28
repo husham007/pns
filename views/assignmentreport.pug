@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  p Class = #{assignment.class}
+  p Subject = #{assignment.subject}
+  p Start Date = #{assignment.startdate}
+  p End Date = #{assignment.enddate}
+  p Assignment Description = #{assignment.assignment}
+  if assignment.senddate
+    b 
+      p Assignment report already sent on  = #{assignment.sentdate}
+  hr
+  
+   
+  
+  
+  

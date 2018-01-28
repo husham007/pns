@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  p name = #{student.name}
+  p Class = #{student.class}
+  p Roll Number = #{student.rollno}
+  p 
+    b Status = #{report.status}
+  p Attendence Date = #{report.date}
+  p Remarks = #{report.remarks}
+  if report.sentdate
+    p
+      b Report is sent on = #{report.sentdate}
+  hr
+  
+   
+  
+  
+  

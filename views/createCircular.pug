@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/reports/createCircular')
+    #form-group
+      label Matter:
+      input.form-control(name='matter', type='text')
+    div.form-group
+      label(for='date') Circular Date:
+      input#testdate.form-control(type='date', name='date' )
+    #form-group
+      label Circular details:
+      textarea.form-control(name='remarks')='Enter Circualar Text'
+    br
+    input.btn.btn-primary(type='submit', value='Create')

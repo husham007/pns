@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Students
+  ul.list-group
+    each student, i in students
+      li.list-group-item
+        if student.author == user._id
+            a(href="/students/"+student._id)= 'Name '+student.name+ ' ,Roll Number '+student.rollno + ' ,Class '+student.class
+         

@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/reports/editassignment/'+report._id)
+    #form-group
+      label Class:
+      input.form-control(name='class', type='text', value=report.class)
+    #form-group
+      label Subject:
+      input.form-control(name='subject', type='text', value=report.subject)
+    #form-group
+      label Start Date:
+      input.form-control(name='startdate', type='text', value=report.startdate)
+    #form-group
+      label End Date:
+      input.form-control(name='enddate', type='text', value=report.enddate)
+    #form-group
+      label Assignment Description:
+      textarea.form-control(name='assignment')=report.assignment
+    br
+    input.btn.btn-primary(type='submit', value='Submit')
