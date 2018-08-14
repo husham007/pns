@@ -12,17 +12,30 @@ const config=require('./config/database');
 
 let Student = require('./models/students');
 const mongoose = require('mongoose');
+console.log("mongoose stuff intialized");
 
-mongoose.connect(config.database);
-
-let db = mongoose.connection;
-db.once('open', function (){
-  console.log('Connected to MongoDB');
+app.use((req, res, next) => {
+  console.log("use for mongoose callback");
+  if (mongoose.connection.readyState) {
+    console.log("if (mongoose.connection.readyState)");
+    next();
+  } else {
+    console.log("else (mongoose.connection.readyState)");
+    require("./mongo")().then(() => next());
+    console.log("else (mongoose.connection.readyState)");
+  }
 });
 
-db.on('error', function(err){
-  console.log(err);
-});
+// ----------------------------------------
+// ENV
+// ----------------------------------------
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
+//mongoose.connect(config.database);
+
+
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -101,6 +114,34 @@ app.use('/reports', reports);
 let users =require('./routes/users');
 app.use('/users', users);
 
-app.listen(3013, function (){
-  console.log('Server started on port 3013...');
+// ----------------------------------------
+// Server
+// ----------------------------------------
+const port = process.env.PORT || process.argv[2] || 3000;
+const host = "localhost";
+
+let args;
+process.env.NODE_ENV === "production" ? (args = [port]) : (args = [port, host]);
+
+args.push(() => {
+  console.log(`Listening: http://${host}:${port}\n`);
 });
+
+if (require.main === module) {
+  app.listen.apply(app, args);
+}
+
+
+
+let db = mongoose.connection;
+db.once('open', function (){
+  console.log('Connected to MongoDB');
+});
+
+db.on('error', function(err){
+  console.log(err);
+});
+
+//app.listen(3013, function (){
+ // console.log('Server started on port 3013...');
+//});
