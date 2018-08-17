@@ -12,6 +12,7 @@ const config=require('./config/database');
 
 let Student = require('./models/students');
 const mongoose = require('mongoose');
+/*
 console.log("mongoose stuff intialized");
 
 app.use((req, res, next) => {
@@ -24,16 +25,18 @@ app.use((req, res, next) => {
     require("./mongo")().then(() => next());
     console.log("else (mongoose.connection.readyState)");
   }
-});
+});*/
 
 // ----------------------------------------
 // ENV
 // ----------------------------------------
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-
-//mongoose.connect(config.database);
+//if (process.env.NODE_ENV !== "production") {
+ // require("dotenv").config();
+//}
+require("dotenv").config();
+let url = process.env.MONGODB_URI;
+console.log(url);
+mongoose.connect(url);
 
 
 
@@ -114,6 +117,7 @@ app.use('/reports', reports);
 let users =require('./routes/users');
 app.use('/users', users);
 
+/*
 // ----------------------------------------
 // Server
 // ----------------------------------------
@@ -131,7 +135,7 @@ if (require.main === module) {
   app.listen.apply(app, args);
 }
 
-
+*/
 
 let db = mongoose.connection;
 db.once('open', function (){
@@ -142,6 +146,6 @@ db.on('error', function(err){
   console.log(err);
 });
 
-//app.listen(3013, function (){
- // console.log('Server started on port 3013...');
-//});
+app.listen(3001, function (){
+  console.log('Server started on port 3001...');
+});
